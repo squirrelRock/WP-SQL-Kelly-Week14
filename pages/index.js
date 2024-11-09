@@ -6,7 +6,7 @@ import { getListMain } from '../lib/datalist';
 
 // GET STATIC PROPS
 export async function getStaticProps() {
-    const allDataMain = getListMain(); // Data from shogunMain.json
+    const allDataMain = await getListMain(); // Data from custom endpoint
     return {
       props: { allDataMain }
     };
