@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
   
     // Determine if on the home page or secondary page
     const isMain = pathname === '/';
-    const isSecondary = pathname === '/secondary';
+    // const isSecondary = pathname === '/secondary';
 
   return (
     <>
@@ -24,9 +24,9 @@ import { useRouter } from 'next/router';
               <Link href="/" className={`btn ${isMain ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
                 Main
               </Link>
-              <Link href="/secondary" className={`btn ${isSecondary ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
+              {/* <Link href="/secondary" className={`btn ${isSecondary ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
                 Supporting
-              </Link>
+              </Link> */}
             </span>
           </ul>
         </nav>
@@ -41,7 +41,7 @@ import { useRouter } from 'next/router';
 
       <footer>
         <div className='container p-2 small '>
-          <p>Shōgun is a 10-part telvision series produced by FX on Hulu, released 2024.</p>
+          <p>Shōgun is a 10-part television series produced by FX on Hulu, released 2024.</p>
         </div>
       </footer>
     </>
