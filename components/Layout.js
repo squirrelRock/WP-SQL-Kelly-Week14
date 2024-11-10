@@ -3,22 +3,21 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 
-  export default function Layout({ children }) {
-    const router = useRouter();
-    const { pathname } = router;
-  
-    // Determine if on the home page or secondary page
-    const isMain = pathname === '/';
-    // const isSecondary = pathname === '/secondary';
+export default function Layout({ children }) {
+  const router = useRouter();
+  const { pathname } = router;
+
+  // Determine if on the home page or secondary page
+  const isMain = pathname === '/';
 
   return (
     <>
       <Head>
-        <title>Shōgun</title>
+        <title>Wordpress SQL</title>
       </Head>
       <header>
         <nav className="navbar navbar-light p-3" style={{ backgroundColor: '#e3f2fd' }}>
-          <h1><em>Shōgun</em></h1>
+          <h1><em>PHP Practice</em></h1>
           <ul className='navbar-nav'>
             <span>
               <Link href="/" className={`btn ${isMain ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
@@ -33,18 +32,17 @@ import { useRouter } from 'next/router';
       </header>
 
       <main>
-      <div className = "container flex p-2 pt-4">
-      {children}
-      </div>
-        
+        <div className="container flex p-2 pt-4">
+          {children}
+        </div>
+
       </main>
 
       <footer>
-        <div className='container p-2 small '>
-          <p>Shōgun is a 10-part television series produced by FX on Hulu, released 2024.</p>
+        <div className='container p-2 small'>
+          <p>This is an alphabetized list of posts.</p>
         </div>
       </footer>
     </>
   );
 }
-
