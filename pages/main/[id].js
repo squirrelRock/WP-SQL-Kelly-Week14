@@ -1,3 +1,4 @@
+//main/[id].js
 
 import Link from 'next/link';
 import Layout from '../../components/Layout';
@@ -15,7 +16,7 @@ export async function getStaticProps( { params } ) {
 }
 
 
-// - getStaticPaths() function  is defined by next.js, tells next.js all valid URLs: 1,2,3 etc.
+//getStaticPaths() function  is defined by next.js, tells next.js all valid URLs: 1,2,3 etc.
 export async function getStaticPaths() {
   const paths = getAllIdsMain();
   return {
@@ -23,8 +24,6 @@ export async function getStaticPaths() {
     fallback: false
   };
 }
-
-
 
 
 export default function Card({ itemData }) {
