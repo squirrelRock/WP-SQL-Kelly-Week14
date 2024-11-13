@@ -17,7 +17,7 @@ export default function Layout({ children }) {
       </Head>
       <header>
         <nav className="navbar navbar-light p-3" style={{ backgroundColor: '#e3f2fd' }}>
-          <h1><em>Week 12 PHP Practice - data from custom endpoint</em></h1>
+          <h1><em>Basic Headless CMS-Powered App</em></h1>
           <ul className='navbar-nav'>
             <span>
               <Link href="/" className={`btn ${isMain ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
