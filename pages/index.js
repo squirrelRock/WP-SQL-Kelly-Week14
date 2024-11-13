@@ -32,11 +32,6 @@ export default function Home({ allDataMain }) {
         })}
       </div>
 
-      {/* Secondary Characters
-      <h4 className="mt-3">More Characters</h4>
-      <Link href="/secondary" className="btn btn-secondary ">
-        View Supporting Characters
-      </Link> */}
     </Layout>
   );
 }
