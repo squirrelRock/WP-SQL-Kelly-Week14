@@ -14,6 +14,7 @@ export default function Layout({ children }) {
     <>
       <Head>
         <title>Wordpress SQL</title>
+        <link rel="icon" href="/cropped-foxy.png" />
       </Head>
       <header>
         <nav className="navbar navbar-light p-3" style={{ backgroundColor: '#e3f2fd' }}>
