@@ -4,30 +4,50 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import { getListMain } from '../lib/datalist';
 
-// GET STATIC PROPS
+
+
 export async function getStaticProps() {
-    const allDataMain = await getListMain(); 
+    const allData = await getListMain();
+    console.log("allData in getStaticProps:", allData); 
+
     return {
-      props: { allDataMain }
+        props: {
+            allData, 
+        },
     };
 }
 
 // HOME COMPONENT
 
 export default function Home({ allData }) {
-    return (
-        <Layout home>
+  if (!allData || allData.length === 0) {
+      return <p>no data</p>;
+  }
+
+  return (
+      <Layout home>
           <h1 className="text-center">List of Posts</h1>
           <div className="list-group">
-            {allData.map(({ id, name }) => (
-              <Link key={id} href={`/${id}`}>
-                <a className="list-group-item list-group-item-action">{name}</a>
+              {allData.map(({ id, Character, commonName, latinName, favoriteFood, content }) => (
+                <Link 
+                key={id} 
+                href={`/${id}`} 
+                className="list-group-item list-group-item-action"
+              >
+                  <h2>{Character}</h2>
+                  <div dangerouslySetInnerHTML={{ __html: content }} />
+                  <h4 className = "py-2">Custom Fields:</h4>
+                  <div className="small">
+                      {commonName && <p>Common Name: {commonName}</p>}
+                      {latinName && <p>Latin Name: {latinName}</p>}
+                      {favoriteFood && <p>Favorite Food: {favoriteFood}</p>}
+                  </div>
               </Link>
-            ))}
+              ))}
           </div>
-        </Layout>
-    );
-  }
+      </Layout>
+  );
+}
 
 // HOME COMPONENT - old
 
