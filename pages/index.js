@@ -7,6 +7,7 @@ import { getListMain } from '../lib/datalist';
 
 
 export async function getStaticProps() {
+
     const allData = await getListMain();
     console.log("allData in getStaticProps:", allData); 
 
@@ -14,6 +15,7 @@ export async function getStaticProps() {
         props: {
             allData, 
         },
+      revalidate: 60
     };
 }
 
