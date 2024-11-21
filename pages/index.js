@@ -34,11 +34,12 @@ export default function Home({ allData }) {
                 href={`/${id}`} 
                 className="list-group-item list-group-item-action"
               >
-                  <h2>{Character}</h2>
+                  <h2 className ="py-3">{Character}</h2>
+                  
                   <div dangerouslySetInnerHTML={{ __html: content }} />
                 
                   <div className="small py-3">
-                    
+
                     <h3>Custom Fields:</h3>
                       {commonName && <p>Common Name: {commonName}</p>}
                       {latinName && <p>Latin Name: {latinName}</p>}
