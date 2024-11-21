@@ -33,7 +33,7 @@ export default function Home({ allData }) {
               {allData.map(({ id, Character, commonName, latinName, favoriteFood, content }) => (
                 <Link 
                 key={id} 
-                href={`/${id}`} 
+                href={`main/${id}`} 
                 className="list-group-item list-group-item-action"
               >
                   <h2 className ="py-3">{Character}</h2>
