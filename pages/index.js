@@ -4,7 +4,10 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import { getListMain } from '../lib/datalist';
 
+
+
 export async function getStaticProps() {
+
     const allData = await getListMain();
     console.log("allData in getStaticProps:", allData); 
 
@@ -12,28 +15,61 @@ export async function getStaticProps() {
         props: {
             allData, 
         },
-        revalidate: 60,
+      revalidate: 60
     };
 }
 
 // HOME COMPONENT
-export default function Home({ allData }) {
-   
 
-    return (
-        <Layout home>
-            <h1 className="text-center">List of Posts</h1>
-            <div className="list-group">
-                {allData.map(({ id, Character }) => (
-                    <Link 
-                        key={id} 
-                        href={`main/${id}`} 
-                        className="list-group-item list-group-item-action"
-                    >
-                        <h2 className="py-3">{Character}</h2>
-                    </Link>
-                ))}
-            </div>
-        </Layout>
-    );
+export default function Home({ allData }) {
+  if (!allData || allData.length === 0) {
+      return <p>no data</p>;
+  }
+
+  return (
+      <Layout home>
+          <h1 className="text-center">List of Posts</h1>
+          <div className="list-group">
+              {allData.map(({ id, Character, commonName, latinName, favoriteFood, content }) => (
+                <Link 
+                key={id} 
+                href={`main/${id}`} 
+                className="list-group-item list-group-item-action"
+              >
+                  <h2 className ="py-3">{Character}</h2>
+
+
+                
+                  <div className="small py-3">
+
+                    <h3>Custom Fields:</h3>
+                      {commonName && <p>Common Name: {commonName}</p>}
+
+                   {latinName && <p>Latin Name: {latinName}</p>}
+
+                      {favoriteFood && <p>Favorite Food: {favoriteFood}</p>}
+                  </div>
+              </Link>
+              ))}
+          </div>
+      </Layout>
+  );
 }
+
+// HOME COMPONENT - old
+
+// export default function Home({ allDataMain }) {
+//     return (
+//         <Layout>
+//           <h1 className="text-center">List of Posts</h1>
+//             <div className="list-group">
+//                 {allDataMain.map(({ id, Character, link }) => (
+//                   <a key={id} href={link} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
+//                         {Character}
+//                     </a>
+//                 ))}
+//             </div>
+//         </Layout>
+//     );
+// }
+

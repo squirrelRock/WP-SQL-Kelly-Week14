@@ -23,6 +23,7 @@ export async function getStaticPaths() {
 }
 
 export default function Card({ itemData }) {
+    // Destructure the data from itemData
     const { 
         post_title, 
         post_author, 
