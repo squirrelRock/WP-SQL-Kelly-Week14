@@ -48,11 +48,11 @@ export default function Card({ itemData }) {
                     />
 
                     <hr />
-
+{/* 
                     <h3>Custom Fields:</h3>
                     {commonName && <p>Common Name: {commonName}</p>}
                     {latinName && <p>Latin Name: {latinName}</p>}
-                    {favoriteFood && <p>Favorite Food: {favoriteFood}</p>}
+                    {favoriteFood && <p>Favorite Food: {favoriteFood}</p>} */}
 
                     <Link href="/" className="btn btn-secondary small mt-2">
                         Back
