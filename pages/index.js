@@ -37,9 +37,7 @@ export default function Home({ allData }) {
                 className="list-group-item list-group-item-action"
               >
                   <h2 className ="py-3">{Character}</h2>
-
-
-                
+  
                   <div className="small py-3">
 
                     <h3>Custom Fields:</h3>

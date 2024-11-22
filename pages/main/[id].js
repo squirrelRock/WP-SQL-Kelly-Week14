@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 }
 
 export default function Card({ itemData }) {
-    // Destructure the data from itemData
+  
     const { 
         post_title, 
         post_author, 
@@ -48,8 +48,8 @@ export default function Card({ itemData }) {
                     />
 
                     <hr />
-{/* 
-                    <h3>Custom Fields:</h3>
+
+                    {/* <h3>Custom Fields:</h3>
                     {commonName && <p>Common Name: {commonName}</p>}
                     {latinName && <p>Latin Name: {latinName}</p>}
                     {favoriteFood && <p>Favorite Food: {favoriteFood}</p>} */}
