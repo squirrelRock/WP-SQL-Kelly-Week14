@@ -41,7 +41,7 @@ export default function Layout({ children }) {
 
       <footer>
         <div className='container p-2 small'>
-          <p>This is an alphabetized list of posts.</p>
+          <p>temp footer</p>
         </div>
       </footer>
     </>

@@ -1,73 +1,52 @@
-// pages/index.js
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import { getListMain } from '../lib/datalist';
-
-
+import useSWR from 'swr';
+import { fetcher } from '../lib/fetchHelper';
 
 export async function getStaticProps() {
+  //getting the data during build
+  const allData = await fetcher(
+    'https://dev-kdurkin-sql.pantheonsite.io/wp-json/twentytwentyone-child/v1/rockSQLdbEndpoint'
+  );
 
-    const allData = await getListMain();
-    console.log("allData in getStaticProps:", allData); 
-
-    return {
-        props: {
-            allData, 
-        },
-      revalidate: 60
-    };
+  return {
+    props: {
+      fallbackData: allData, // data for initial render
+    },
+    revalidate: 60, 
+  };
 }
 
-// HOME COMPONENT
+export default function Home({ fallbackData }) {
+  // SWR to fetch data with fallback from getStaticProps
+  const { data: allData, error } = useSWR(
+    'https://dev-kdurkin-sql.pantheonsite.io/wp-json/twentytwentyone-child/v1/rockSQLdbEndpoint',
+    fetcher,
+    {
+      fallbackData, // to use the static data initially
+      refreshInterval: 30000, //revalidate every 30 seconds
+    }
+  );
 
-export default function Home({ allData }) {
-  if (!allData || allData.length === 0) {
-      return <p>no data</p>;
-  }
+  // loading and error states
+  if (error) return <p>Error loading data...</p>;
+  if (!allData) return <p>Loading...</p>;
 
   return (
-      <Layout home>
-          <h1 className="text-center">List of Posts</h1>
-          <div className="list-group">
-              {allData.map(({ id, Character, commonName, latinName, favoriteFood, content }) => (
-                <Link 
-                key={id} 
-                href={`main/${id}`} 
-                className="list-group-item list-group-item-action"
-              >
-                  <h2 className ="py-3">{Character}</h2>
-  
-                  <div className="small py-3">
-
-                    <h3>Custom Fields:</h3>
-                      {commonName && <p>Common Name: {commonName}</p>}
-
-                   {latinName && <p>Latin Name: {latinName}</p>}
-
-                      {favoriteFood && <p>Favorite Food: {favoriteFood}</p>}
-                  </div>
-              </Link>
-              ))}
-          </div>
-      </Layout>
+    <Layout home>
+      <h1 className="text-center">List of Rock Posts</h1>
+      <div className="list-group">
+        {allData.map(({ ID, post_title }) => (
+          <Link
+            key={ID}
+            href={`rocks4sale/${ID}`}
+            className="list-group-item list-group-item-action"
+          >
+            <h2 className="py-3">{post_title || 'Untitled Post'}</h2>
+          </Link>
+        ))}
+      </div>
+    </Layout>
   );
 }
-
-// HOME COMPONENT - old
-
-// export default function Home({ allDataMain }) {
-//     return (
-//         <Layout>
-//           <h1 className="text-center">List of Posts</h1>
-//             <div className="list-group">
-//                 {allDataMain.map(({ id, Character, link }) => (
-//                   <a key={id} href={link} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
-//                         {Character}
-//                     </a>
-//                 ))}
-//             </div>
-//         </Layout>
-//     );
-// }
-
