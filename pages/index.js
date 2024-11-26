@@ -25,7 +25,7 @@ export default function Home({ fallbackData }) {
     fetcher,
     {
       fallbackData, // to use the static data initially
-      refreshInterval: 30000, //revalidate every 30 seconds
+      refreshInterval: 30000, //to revalidate every 30 seconds
     }
   );
 
@@ -37,13 +37,15 @@ export default function Home({ fallbackData }) {
     <Layout home>
       <h1 className="text-center">List of Rock Posts</h1>
       <div className="list-group">
-        {allData.map(({ ID, post_title }) => (
+        {allData.map(({ ID, post_title, post_date, rockID }) => (
           <Link
             key={ID}
             href={`rocks4sale/${ID}`}
             className="list-group-item list-group-item-action"
           >
             <h2 className="py-3">{post_title || 'Untitled Post'}</h2>
+            <p>Date: {post_date}</p>
+            <p>Rock ID: {rockID}</p>
           </Link>
         ))}
       </div>
