@@ -29,9 +29,9 @@ export default function Card({ itemData }) {
         post_author, 
         post_date, 
         post_content, 
-        commonName, 
-        latinName, 
-        favoriteFood 
+        // waiver, 
+        // background, 
+        // references, 
     } = itemData;
 
     return (
