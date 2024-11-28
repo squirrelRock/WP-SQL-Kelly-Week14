@@ -30,7 +30,7 @@ export default function RocksForSale({ fallbackData }) {
   return (
     <Layout home>
       <div className="p-1">
-        <h1 className="page-title">Rocks for Sale</h1>
+        <h1 className="page-title">Rocks for Sale</h1 >
         <div className="grid-container">
           {allData.map(({ ID, post_title, rock_image }) => (
             <Link key={ID} href={`rocks4sale/${ID}`} className="grid-item">
