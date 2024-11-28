@@ -23,15 +23,6 @@ a {
   background-color: antiquewhite;
  }
 
- .accordion-button.male {
-  background-color: rgb(190, 213, 221);
-  color: #000; 
-}
-
-.accordion-button.female {
-  background-color: rgb(236, 222, 241);
-  color: #00f; 
-}
 
 
 .list-group-item.male {
@@ -51,9 +42,6 @@ a {
 }
 
 
-.breadcrumb-item + .breadcrumb-item::before {
-  content: '>';
-}
 
 .box {
   border-width: 1;
@@ -63,4 +51,179 @@ a {
   padding: 30px;
   
   font-size: .7em;
+}
+.square-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px; 
+  height: auto; 
+  background-color: #f9f9f9;
+  padding: 10px; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  margin: auto;
+}
+
+.square-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.square-button span {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  display: block; 
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* styles for squirrels */
+
+.squirrel-page {
+  background-color: #557070;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.squirrel-card {
+  background-color: #dfdddd;
+  border-radius: 8px;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.squirrel-card-body {
+  text-align: left;
+}
+
+.squirrel-card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.squirrel-text {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.squirrel-content {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #34495e;
+  margin-top: 1rem;
+}
+
+.squirrel-profile-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #2c3e50;
+}
+
+.squirrel-profile-list {
+  list-style-type: none;
+  padding-left: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.squirrel-profile-list li {
+  margin-bottom: 0.5rem;
+}
+
+.squirrel-back-btn {
+  display: block;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+
+/* Rocks for Sale */
+
+.rocks-sale-container {
+  background-color: #c1a592;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rocks-sale-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.rocks-sale-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d3d8d7; 
+  height: 200px; 
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.rocks-sale-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.rocks-sale-card-content {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.rocks-sale-card h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
 }

@@ -47,8 +47,8 @@ export default function Layout({ children }) {
       </main>
 
       <footer>
-        <div className='container p-2 small'>
-          <p>temp footer</p>
+        <div className='container pt-5 pb-2 small'>
+          <p>all rights reserved copyright 2024 - SQL for SQuirreLs</p>
         </div>
       </footer>
     </>

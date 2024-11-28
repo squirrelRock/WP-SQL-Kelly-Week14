@@ -33,7 +33,7 @@ export default function Home({ fallbackData }) {
   
     return (
       <Layout home>
-        <h1 className="text-center">List of Squirrel Posts</h1>
+        <h1 className="text-center py-5">Squirrel Posts</h1>
         <div className="list-group">
           {allSData.map(({ ID, post_title, post_date }) => (
             <Link
@@ -43,7 +43,7 @@ export default function Home({ fallbackData }) {
             >
               <h2 className="py-3">{post_title || 'Untitled Post'}</h2>
               <p className="card-text small">
-                  Date: {post_date ? post_date.split(' ')[0] : 'No date available'}
+                 
               </p>
             </Link>
           ))}

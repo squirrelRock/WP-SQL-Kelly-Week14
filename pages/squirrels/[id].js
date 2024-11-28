@@ -24,10 +24,8 @@ export async function getStaticPaths() {
 }
 
 export default function Card({ itemData }) {
-  
     const { 
         post_title, 
-        post_author, 
         post_date, 
         post_content,
         user_login, 
@@ -38,29 +36,37 @@ export default function Card({ itemData }) {
 
     return (
         <Layout>
-            <article className="card col-9">
-                <div className="card-body">
-                    <h2 className="card-title">{post_title}</h2>
-                    <p className="card-text small">Name: {user_login}</p>
-                    <p className="card-text small"> Date: {post_date ? post_date.split(' ')[0] : 'No date available'} </p>
-
-                    <div 
-                        className="card-text mt-2 small" 
-                        dangerouslySetInnerHTML={{ __html: post_content }} 
-                    />
-
-                    <hr />
-
-                    <h4>Profile:</h4>
-                    {common && <p>Clan: {common}</p>}
-                    {latin && <p>Latin Name: {latin}</p>}
-                    {food && <p>Favorite Food: {food}</p>}
-
-                    <Link href="/" className="btn btn-secondary small mt-2">
-                        Back
-                    </Link>
+            <div className="squirrel-page">
+                <div className="squirrel-card">
+                    <div className="squirrel-card-body">
+                        <h2 className="squirrel-card-title">{post_title}</h2>
+                        <hr />
+                        <p className="squirrel-text">
+                            <strong>Posting by:</strong> {user_login || 'Unknown'}
+                        </p>
+                        <p className="squirrel-text">
+                            <strong>Date:</strong>{' '}
+                            {post_date ? post_date.split(' ')[0] : 'No date available'}
+                        </p>
+                        <div
+                            className="squirrel-content"
+                            dangerouslySetInnerHTML={{
+                                __html: post_content || '<p>No content available</p>',
+                            }}
+                        />
+                        <hr />
+                        <h4 className="squirrel-profile-title">Profile:</h4>
+                        <ul className="squirrel-profile-list">
+                            {common && <li><strong>Clan:</strong> {common}</li>}
+                            {latin && <li><strong>Latin Name:</strong> {latin}</li>}
+                            {food && <li><strong>Favorite Food:</strong> {food}</li>}
+                        </ul>
+                        <Link href="/squirrels" className="btn btn-secondary squirrel-back-btn">
+                            Back
+                        </Link>
+                    </div>
                 </div>
-            </article>
+            </div>
         </Layout>
     );
 }
