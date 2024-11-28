@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import useSWR from 'swr';
 import { fetcher } from '../lib/fetchHelper';
+import Image from 'next/image';
 
 export async function getStaticProps() {
   const allData = await fetcher(
@@ -13,7 +14,7 @@ export async function getStaticProps() {
     props: {
       fallbackData: allData,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 }
 
@@ -36,11 +37,15 @@ export default function RocksForSale({ fallbackData }) {
             <Link key={ID} href={`rocks4sale/${ID}`} className="grid-item">
               <div className="card">
                 <div className="image-container">
-                  <img
-                    src={rock_image}
-                    alt={post_title || 'Rock for Sale'}
-                    className="rock-image"
-                  />
+                <Image
+            src={rock_image}
+             alt={post_title || 'Rock for Sale'}
+             width={260} 
+              height={195} 
+              className="rock-image" 
+              style={{ objectFit: 'cover', borderRadius: '5px' }} 
+              priority
+            />
                 </div>
                 <h2 className="card-title">{post_title || 'Untitled Post'}</h2>
               </div>

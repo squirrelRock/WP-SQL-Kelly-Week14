@@ -38,7 +38,7 @@ export default function Card({ itemData }) {
 
     return (
         <Layout>
-            {/* Chipmunks Favorite color as Background Color */}
+            {/* using Chipmunks Favorite color as Background Color */}
             <div style={{ backgroundColor: fav_color || '#ffffff', minHeight: '100vh', padding: '20px' }}>
                 <article className="card mx-auto" style={{ maxWidth: '600px', backgroundColor: '#ffffff', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
                     <div className="card-body">
@@ -50,7 +50,7 @@ export default function Card({ itemData }) {
 
                         <hr />
 
-                        {/* Embedded YouTube Video */}
+                        {/* YouTube Video */}
                         {media_file && (
                             <div className="video-container mb-3">
                                 <iframe

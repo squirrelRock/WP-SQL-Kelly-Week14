@@ -50,7 +50,7 @@ export default function Squirrels({ fallbackData }) {
                     <div className="card-body">
                       <h5 className="card-title">{post_title || 'Untitled Post'}</h5>
                       <p className="card-text text-muted small">
-                        {post_date ? post_date.split(' ')[0] : 'No date available'}
+                       
                       </p>
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -20,20 +21,23 @@ export default function Layout({ children }) {
       </Head>
       <header>
         <nav className="navbar navbar-light p-3" style={{ backgroundColor: '#e3f2fd' }}>
-          {/* Logo on the left */}
+       
           <Link href="/" className="navbar-brand">
-            <img
-              src="https://dev-kdurkin-sql.pantheonsite.io/wp-content/uploads/2024/11/foxy.png"
-              alt="SQL for Squirrels Logo"
-              style={{ height: '80px', width: 'auto' }}
-            />
+          <Image
+      src="https://dev-kdurkin-sql.pantheonsite.io/wp-content/uploads/2024/11/foxy.png"
+        alt="SQL for Squirrels Logo"
+        width={80}
+        height={80} 
+        style={{ width: 'auto', height: '80px' }} 
+        priority 
+        />
           </Link>
 
-          {/* Navigation Buttons */}
+          {/* Nav */}
           <ul className="navbar-nav flex-row">
             <li className="nav-item mx-1">
               <Link href="/" className={`btn ${isMain ? 'btn-info active' : 'btn-secondary'} mx-1`}>
-                Main
+                Home
               </Link>
             </li>
             <li className="nav-item mx-1">

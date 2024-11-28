@@ -17,7 +17,7 @@ export default function Home() {
                             <div className="square-button">
                                 <div className="image-container">
                                     <Image
-                                        src="https://dev-kdurkin-sql.pantheonsite.io/wp-content/uploads/2024/11/douglasM-square.webp" 
+                                        src="https://dev-kdurkin-sql.pantheonsite.io/wp-content/uploads/2024/11/douglasM1.webp" 
                                         alt="Squirrel Posts"
                                         width={300}
                                         height={300}
@@ -35,7 +35,7 @@ export default function Home() {
                             <div className="square-button">
                                 <div className="image-container">
                                     <Image
-                                        src="https://dev-kdurkin-sql.pantheonsite.io/wp-content/uploads/2024/11/zenPurple1024_1024.webp"
+                                        src="https://dev-kdurkin-sql.pantheonsite.io/wp-content/uploads/2024/11/zen-chip-hide_square.webp"
                                         alt="Rocks for Sale"
                                         width={300} 
                                         height={300}
