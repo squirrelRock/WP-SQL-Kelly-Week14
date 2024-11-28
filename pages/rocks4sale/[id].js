@@ -76,7 +76,7 @@ export default function Card({ fallbackData }) {
               </div>
             )}
             <div className="text-center mt-4">
-              <Link href="/" className="btn btn-secondary">
+              <Link href="/rocks4sale" className="btn btn-secondary">
                 Back
               </Link>
             </div>
