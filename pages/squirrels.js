@@ -1,4 +1,3 @@
-//pages/squirrels.js
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
@@ -6,48 +5,61 @@ import useSWR from 'swr';
 import { fetcher } from '../lib/fetchHelper';
 
 export async function getStaticProps() {
-  //getting the data during build
+  // Fetch data during build
   const allSData = await fetcher(
     'https://dev-kdurkin-sql.pantheonsite.io/wp-json/twentytwentyone-child/v1/squirrelsEndpoint'
   );
 
   return {
     props: {
-      fallbackData: allSData, // data for initial render
+      fallbackData: allSData,
     },
-    revalidate: 1, 
+    revalidate: 1,
   };
 }
 
-export default function Home({ fallbackData }) {
-  // SWR to fetch data with fallback from getStaticProps
+export default function Squirrels({ fallbackData }) {
+  // SWR to fetch data dynamically
+  const { data: allSData, error } = useSWR(
+    'https://dev-kdurkin-sql.pantheonsite.io/wp-json/twentytwentyone-child/v1/squirrelsEndpoint',
+    fetcher,
+    { fallbackData }
+  );
 
-    const { data: allSData, error } = useSWR(
-      'https://dev-kdurkin-sql.pantheonsite.io/wp-json/twentytwentyone-child/v1/squirrelsEndpoint',
-      fetcher,
-      { fallbackData }
-    );
-  
-    if (error) return <p>Error loading data...</p>;
-    if (!allSData) return <p>Loading...</p>;
-  
-    return (
-      <Layout home>
-        <h1 className="text-center py-5">Squirrel Posts</h1>
-        <div className="list-group">
-          {allSData.map(({ ID, post_title, post_date }) => (
-            <Link
-              key={ID}
-              href={`squirrels/${ID}`}
-              className="list-group-item list-group-item-action"
-            >
-              <h2 className="py-3">{post_title || 'Untitled Post'}</h2>
-              <p className="card-text small">
-                 
-              </p>
-            </Link>
-          ))}
+  if (error) return <p>Error loading data...</p>;
+  if (!allSData) return <p>Loading...</p>;
+
+  return (
+    <Layout>
+     
+      <div style={{ backgroundColor: '#eef6f1', minHeight: '100vh', padding: '20px' }}>
+        <h1 className="text-center py-4">Squirrel Posts</h1>
+        <div className="container">
+          <div className="row g-3">
+            {allSData.map(({ ID, post_title, post_date }) => (
+              <div className="col-lg-4 col-md-6 col-sm-12" key={ID}>
+                <Link href={`squirrels/${ID}`} className="text-decoration-none">
+                  <div
+                    className="card h-100"
+                    style={{
+                      borderRadius: '10px',
+                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                      transition: 'transform 0.2s',
+                    }}
+                  >
+                    <div className="card-body">
+                      <h5 className="card-title">{post_title || 'Untitled Post'}</h5>
+                      <p className="card-text text-muted small">
+                        {post_date ? post_date.split(' ')[0] : 'No date available'}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
-      </Layout>
-    );
-  }
+      </div>
+    </Layout>
+  );
+}

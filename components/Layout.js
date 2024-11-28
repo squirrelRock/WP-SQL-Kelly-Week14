@@ -15,40 +15,53 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <title>Wordpress SQL</title>
+        <title>WordPress SQL</title>
         <link rel="icon" href="/cropped-foxy.png" />
       </Head>
       <header>
         <nav className="navbar navbar-light p-3" style={{ backgroundColor: '#e3f2fd' }}>
-          <h1><em>Basic Headless CMS-Powered App</em></h1>
-          <ul className='navbar-nav'>
-            <span>
-              <Link href="/" className={`btn ${isMain ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
+          {/* Logo on the left */}
+          <Link href="/" className="navbar-brand">
+            <img
+              src="https://dev-kdurkin-sql.pantheonsite.io/wp-content/uploads/2024/11/foxy.png"
+              alt="SQL for Squirrels Logo"
+              style={{ height: '80px', width: 'auto' }}
+            />
+          </Link>
+
+          {/* Navigation Buttons */}
+          <ul className="navbar-nav flex-row">
+            <li className="nav-item mx-1">
+              <Link href="/" className={`btn ${isMain ? 'btn-info active' : 'btn-secondary'} mx-1`}>
                 Main
               </Link>
-              <Link href="/rocks4sale" className={`btn ${isRocks4Sale ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
-                Rocks 4 Sale
-              </Link>
-              <Link href="/squirrels" className={`btn ${isSquirrels ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
+            </li>
+            <li className="nav-item mx-1">
+              <Link href="/squirrels" className={`btn ${isSquirrels ? 'btn-info active' : 'btn-secondary'} mx-1`}>
                 Squirrels
               </Link>
-              <Link href="/chipmunks" className={`btn ${isChipmunks ? 'btn-warning active' : 'btn-secondary'} mx-1`}>
+            </li>
+            <li className="nav-item mx-1">
+              <Link href="/rocks4sale" className={`btn ${isRocks4Sale ? 'btn-info active' : 'btn-secondary'} mx-1`}>
+                Rocks 4 Sale
+              </Link>
+            </li>
+            <li className="nav-item mx-1">
+              <Link href="/chipmunks" className={`btn ${isChipmunks ? 'btn-info active' : 'btn-secondary'} mx-1`}>
                 Chipmunks
               </Link>
-            </span>
+            </li>
           </ul>
         </nav>
       </header>
 
       <main>
-        <div className="container flex p-2 pt-4">
-          {children}
-        </div>
+        <div className="container flex p-2 pt-4">{children}</div>
       </main>
 
       <footer>
-        <div className='container pt-5 pb-2 small'>
-          <p>all rights reserved copyright 2024 - SQL for SQuirreLs</p>
+        <div className="container pt-5 pb-2 small text-center">
+          <p>All rights reserved &copy; 2024 - SQL for Squirrels</p>
         </div>
       </footer>
     </>

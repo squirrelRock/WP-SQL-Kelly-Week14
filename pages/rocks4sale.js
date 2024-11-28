@@ -1,4 +1,3 @@
-// pages/rocks4sale.js
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
@@ -30,18 +29,26 @@ export default function RocksForSale({ fallbackData }) {
 
   return (
     <Layout home>
-      <div className="p-2">
-        <h1 className="text-center mb-4 py-5">Rocks for Sale</h1>
-        <div className="rocks-sale-grid">
-          {allData.map(({ ID, post_title }) => (
-            <Link key={ID} href={`rocks4sale/${ID}`} className="rocks-sale-card">
-              <div className="rocks-sale-card-content">
-                <h2>{post_title || 'Untitled Post'}</h2>
+      <div className="p-1">
+        <h1 className="page-title">Rocks for Sale</h1>
+        <div className="grid-container">
+          {allData.map(({ ID, post_title, rock_image }) => (
+            <Link key={ID} href={`rocks4sale/${ID}`} className="grid-item">
+              <div className="card">
+                <div className="image-container">
+                  <img
+                    src={rock_image}
+                    alt={post_title || 'Rock for Sale'}
+                    className="rock-image"
+                  />
+                </div>
+                <h2 className="card-title">{post_title || 'Untitled Post'}</h2>
               </div>
             </Link>
           ))}
         </div>
       </div>
+     
     </Layout>
   );
 }

@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 export default function Home() {
     return (
         <Layout home>
-            <h1 className="text-center mb-4 py-3">SQL for Squirrels Home</h1>
+            <h1 className="text-center mb-4 py-3">SQL for SQuirreLs</h1>
             <div className="container">
         
             <div className="row g-3">
